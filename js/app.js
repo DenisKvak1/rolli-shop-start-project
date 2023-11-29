@@ -39,9 +39,7 @@ fetch('http://localhost:3000/sushi')
   })
   .catch(error => console.error('Error:', error));
   
-export function updateCart(value){
-    cart=value    
-}
-export function updateCartCount(value, index){
-    cart[index].quantity=value    
-}
+export let updateCart =(value)=>cart=value    
+export let updateCartCount=(value, index)=>cart[index].quantity=value  
+
+
