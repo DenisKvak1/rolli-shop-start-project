@@ -2,10 +2,10 @@
 const containerRoll=document.getElementById('container')
 const containerCart=document.getElementById('cart-wrapper')
 
-import {htmlRoll, htmlCart, checkArray,CheckIdCart,upDateSum} from './util.js'
-let cart=[]
+import {htmlRoll, htmlCart, checkArray,CheckIdCart,upDateSum, Delete, count} from './util.js'
+export let cart=[]
 checkArray(cart)
-fetch('http://213.227.241.132:3000/sushi')
+fetch('http://localhost:3000/sushi')
   .then(response => response.json())
   .then(data => {
     data.forEach(element => {
@@ -51,38 +51,12 @@ document.getElementById('dostBtn').addEventListener('click',()=>{
     }
 })
 
-function Delete(){
-    document.querySelectorAll('.delete').forEach(item => {
-        item.addEventListener('click', () => {
-            let PrefixId=item.classList[item.classList.length-1]
-            let id=+PrefixId.split("_")[1];
-            let cont = item.closest('.cart-item')
-            cont.remove()
-            cart = cart.filter(item => item.id !== id);
-            checkArray(cart)
-            
-        });
-    });
+
+
+
+export function updateCart(value){
+    cart=value    
 }
-function count(){
-    window.addEventListener('click', (event)=>{
-        if(event.target.dataset.action==='plus' || event.target.dataset.action==='minus'){
-            let item=event.target;
-            let count=item.closest('.counter-wrapper').querySelector('[data-counter]')
-            let id=item.closest('.idSet').dataset.id
-            if(event.target.dataset.action==='plus'){
-                count.textContent=+count.textContent+1
-            }
-            if(event.target.dataset.action==='minus'){
-                if(+count.textContent>1){
-                    count.textContent-=1
-                }
-            }
-            if(cart.some(item => item.id == id)){
-                let index=cart.findIndex(item => item.id == id);
-                cart[index].quantity=+count.textContent;
-            }
-            upDateSum(cart)
-        }
-    })
+export function updateCartCount(value, index){
+    cart[index].quantity=value    
 }

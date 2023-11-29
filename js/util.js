@@ -1,3 +1,4 @@
+import {cart, updateCart,updateCartCount} from './app.js'
 export function htmlRoll(data){
                 return `
                     <div class="col-md-6" data-id="${data.id}" >
@@ -79,5 +80,40 @@ export function upDateSum(cart){
     let totalPriceArray = cart.map(cartObj => cartObj.price * cartObj.quantity);
     let totalSum = totalPriceArray.reduce((acc, curr) => acc + curr, 0);
     document.querySelector('.total-price').textContent=totalSum
-    console.log(totalSum)
+}
+export function Delete(){
+    document.querySelectorAll('.delete').forEach(item => {
+        item.addEventListener('click', () => {
+            let PrefixId=item.classList[item.classList.length-1]
+            let id=+PrefixId.split("_")[1];
+            let cont = item.closest('.cart-item')
+            cont.remove()
+            updateCart(cart.filter(item => item.id !== id))
+            checkArray(cart)
+            upDateSum(cart)
+        });
+    });
+}
+
+export function count(){
+    window.addEventListener('click', (event)=>{
+        if(event.target.dataset.action==='plus' || event.target.dataset.action==='minus'){
+            let item=event.target;
+            let count=item.closest('.counter-wrapper').querySelector('[data-counter]')
+            let id=item.closest('.idSet').dataset.id
+            if(event.target.dataset.action==='plus'){
+                count.textContent=+count.textContent+1
+            }
+            if(event.target.dataset.action==='minus'){
+                if(+count.textContent>1){
+                    count.textContent-=1
+                }
+            }
+            if(cart.some(item => item.id == id)){
+                let index=cart.findIndex(item => item.id == id);
+                updateCartCount(+count.textContent, index)
+            }
+            upDateSum(cart)
+        }
+    })
 }
