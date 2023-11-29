@@ -5,7 +5,7 @@ const containerCart=document.getElementById('cart-wrapper')
 import {htmlRoll, htmlCart, checkArray,CheckIdCart,upDateSum, Delete, count} from './util.js'
 export let cart=[]
 checkArray(cart)
-fetch('http://localhost:3000/sushi')
+fetch('API/db.json')
   .then(response => response.json())
   .then(data => {
     data.forEach(element => {
