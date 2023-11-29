@@ -4,7 +4,7 @@
       "name": "Филадельфия хит ролл",
       "description": "Ролл с лососем, авокадо и сливочным сыром, украшенный икрой тобико",
       "price": 300,
-      "image": "api/images/philadelphia.jpg",
+      "image": "API/images/philadelphia.jpg",
 	  "count": 6,
 	  "mass": 152
     },
@@ -13,7 +13,7 @@
       "name": "Калифорния темпура",
       "description": "Темпура ролл с крабовым мясом, авокадо и огурцом",
       "price": 250,
-      "image": "api/images/california-tempura.jpg",
+      "image": "API/images/california-tempura.jpg",
 	  "count": 6,
 	  "mass": 125
     },
@@ -22,7 +22,7 @@
       "name": "Запеченый ролл «Калифорния»",
       "description": "Ролл Калифорния, запеченный в духовке с соусом унаги",
       "price": 230,
-      "image": "api/images/zapech-california.jpg",
+      "image": "API/images/zapech-california.jpg",
 	  "count": 6,
 	  "mass": 187
     },
@@ -31,7 +31,7 @@
       "name": "Филадельфия",
       "description": "Классический ролл с лососем и сливочным сыром",
       "price": 320,
-      "image": "api/images/philadelphia.jpg",
+      "image": "API/images/philadelphia.jpg",
 	  "count": 6,
 	  "mass": 131
     }
